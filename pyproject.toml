@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gov-spending-pipeline"
+version = "0.1.0"
+description = "Bulk USASpending.gov Prime Award data pipeline (WIP)"
+requires-python = ">=3.11"
+dependencies = [
+    "requests",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+gov-spending-demo = "gov_spending.demo:main"

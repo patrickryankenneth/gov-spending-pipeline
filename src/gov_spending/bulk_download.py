@@ -2,9 +2,8 @@
 Bulk USAspending download: loops over toptier agencies x year-quarters.
 Resumable (skips files already on disk) and rate-limited to be polite to the API.
 
-Run from inside the project so DATA_DIR resolves correctly:
-    cd /path/to/gov-spending-pipeline
-    python3 bulk_download.py
+Run: gov-spending-bulk
+(after `pip install -e .` from the repo root)
 """
 import json
 import time
@@ -102,7 +101,7 @@ def run_bulk(start_year, end_year, agency_filter=None, limit_agencies=None):
     print("Done. See manifest at", MANIFEST_PATH)
 
 
-if __name__ == "__main__":
+def main():
     # Target the top N agencies by budget authority instead of walking the
     # list alphabetically -- avoids burning requests on near-dormant boards
     # and commissions with 0-14 rows/quarter.
@@ -116,3 +115,7 @@ if __name__ == "__main__":
     # Once that looks right, widen the year range for the real pull, e.g.:
     # run_bulk(start_year=2019, end_year=2024,
     #          agency_filter=lambda a: a["agency_name"] in top_names)
+
+
+if __name__ == "__main__":
+    main()

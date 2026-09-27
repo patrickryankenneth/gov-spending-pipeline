@@ -14,5 +14,7 @@ dependencies = [
 [tool.setuptools.packages.find]
 where = ["src"]
 
+
 [project.scripts]
 gov-spending-demo = "gov_spending.demo:main"
+gov-spending-bulk = "gov_spending.bulk_download:main"
